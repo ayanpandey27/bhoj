@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌺 प्रीति भोज 🌺</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background: radial-gradient(circle at top,#8b0000,#4b0000);
+padding:20px;
+font-family:'Poppins',sans-serif;
+}
+
+.card{
+background:linear-gradient(145deg,#b30000,#7a0000);
+border:8px solid gold;
+border-radius:20px;
+padding:35px 25px;
+max-width:420px;
+width:100%;
+text-align:center;
+color:#fff8dc;
+box-shadow:0 0 25px rgba(255,215,0,0.6);
+position:relative;
+animation:fadeIn 1.5s ease;
+}
+
+.card:before,.card:after{
+content:"✨";
+position:absolute;
+font-size:22px;
+color:gold;
+}
+
+.card:before{top:10px;left:15px;}
+.card:after{bottom:10px;right:15px;}
+
+h1{
+font-family:'Cinzel',serif;
+font-size:30px;
+color:gold;
+margin-bottom:15px;
+text-shadow:0 0 10px gold;
+}
+
+.subtitle{
+font-size:16px;
+margin-bottom:15px;
+}
+
+.details{
+margin:18px 0;
+font-size:16px;
+line-height:1.7;
+}
+
+.funny{
+font-size:14px;
+margin-top:10px;
+color:#ffe4b5;
+line-height:1.6;
+}
+
+.countdown{
+margin:20px 0;
+font-weight:600;
+color:#ffd700;
+}
+
+button{
+margin-top:15px;
+padding:10px 25px;
+font-size:15px;
+border:none;
+border-radius:25px;
+background:gold;
+color:#7a0000;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+background:#ffd700;
+}
+
+#celebration{
+display:none;
+margin-top:18px;
+font-size:16px;
+color:#00ffcc;
+animation:pop 0.6s ease forwards;
+}
+
+@keyframes pop{
+0%{transform:scale(0);}
+100%{transform:scale(1);}
+}
+
+@keyframes fadeIn{
+0%{opacity:0; transform:scale(0.9);}
+100%{opacity:1; transform:scale(1);}
+}
+
+.confetti{
+position:fixed;
+width:8px;
+height:8px;
+top:0;
+animation:fall 3s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(0) rotate(0deg);}
+100%{transform:translateY(100vh) rotate(360deg);}
+}
+
+@media(max-width:480px){
+h1{font-size:24px;}
+.details{font-size:14px;}
+.funny{font-size:13px;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🌺 प्रीति भोज 🌺</h1>
+
+<div class="subtitle">
+शुभ अवसर पर सादर आमंत्रण 🙏
+</div>
+
+<p>
+अरे सुनत हउवा 😌  
+हमरे घर प्रीति भोज रखल गवा है!
+</p>
+
+<div class="details">
+📍 स्थान: D-601 <br>
+⏰ समय: रात 9 बजे <br>
+📅 दिनांक: 27 फरवरी 2026
+</div>
+
+<div class="funny">
+⚠️ नोट: पेट खाली रखिहा 😎<br>
+🍽️ खाना देख के शरमाइब मत, खुल के खाइब!<br>
+😆 पड़ोसी खुशबू सूँघ के खुद आ जाए तो जिम्मेदारी आपकी नाहीं होई!
+</div>
+
+<p class="funny">
+देरी से आई तो रसम मलाई खत्म भी हो सकत है 😜<br>
+और जल्दी आई तो बर्तन धोवे में लगा दिहा जइहै!
+</p>
+
+<div class="countdown" id="countdown"></div>
+
+<button onclick="confirmDinner()">हम जरूर आइब 💛</button>
+
+<div id="celebration">
+वाह! अब तौ प्रीति भोज में रौनक बढ़ गवा 🎉✨<br>
+आपकी थाली अलग से चमक रही है!
+</div>
+
+</div>
+
+<script>
+const eventDate = new Date("Feb 27, 2026 21:00:00").getTime();
+const countdownElement = document.getElementById("countdown");
+
+setInterval(function(){
+const now = new Date().getTime();
+const dist = eventDate - now;
+
+const d = Math.floor(dist / (1000 * 60 * 60 * 24));
+const h = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const m = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
+const s = Math.floor((dist % (1000 * 60)) / 1000);
+
+if(dist > 0){
+countdownElement.innerHTML =
+"⏳ " + d + " दिन " + h + " घंटा " + m + " मिनट " + s + " सेकंड शेष";
+}else{
+countdownElement.innerHTML = "🍽️ प्रीति भोज प्रारंभ हो चुका है!";
+}
+},1000);
+
+function confirmDinner(){
+document.getElementById("celebration").style.display="block";
+for(let i=0;i<50;i++){
+let c=document.createElement("div");
+c.className="confetti";
+c.style.left=Math.random()*100+"vw";
+c.style.backgroundColor="hsl("+Math.random()*360+",100%,60%)";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),3000);
+}
+}
+</script>
+
+</body>
+</html>
